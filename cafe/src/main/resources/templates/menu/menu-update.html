@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение</title>
+    <!-- Main Styles -->
+    <link rel="stylesheet" href="/static/styles/style.min.css" th:href="@{/styles/style.min.css}">
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" href="/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css"
+          th:href="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css}">
+    <!-- Waves Effect -->
+    <link rel="stylesheet" href="/static/plugin/waves/waves.min.css" th:href="@{/plugin/waves/waves.min.css}">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" href="/static/plugin/sweet-alert/sweetalert.css"
+          th:href="@{/plugin/sweet-alert/sweetalert.css}">
+    <!-- Color Picker -->
+    <link rel="stylesheet" href="/static/color-switcher/color-switcher.min.css"
+          th:href="@{/color-switcher/color-switcher.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/styles/button-create.css" th:href="@{/style/button-create.css}">
+</head>
+<body>
+<div th:insert="blocks/header :: header"></div>
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row small-spacing">
+            <div class="col-lg-12 col-xs-12">
+                <div class="box-content card white">
+                    <h4 class="box-title">Изменение</h4>
+                    <div th:each="m : ${menu}" class="card-content">
+                        <form method="post" class="form-horizontal">
+                            <div class="form-group">
+                                <label for="inp-type-2" class="col-sm-3 control-label">Наименование блюда</label>
+                                <div class="col-sm-9">
+                                    <select class="form-control select2_1" name="name">
+                                        <option th:each="d:${dish}"
+                                                th:value="${d.getName().toString()}"
+                                                th:text="${d.getName()}"
+                                                th:selected="${d.getName()} == ${m.getDish().getName()}"
+                                                th:type="text">
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inp-type-2" class="col-sm-3 control-label">Цена</label>
+                                <div class="col-sm-9">
+                                    <input th:value="${m.getPrice()}" type="text" class="form-control" id="inp-type-2"
+                                           name="price" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inp-type-3" class="col-sm-3 control-label">Дата</label>
+                                <div class="col-sm-9">
+                                    <input th:value="${m.getDate()}" type="date" class="form-control" id="inp-type-3"
+                                           name="date" autocomplete="off" required>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-orange waves-effect waves-light">Изменить</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <ul class="list-inline">
+                <li>2022 © rc.</li>
+            </ul>
+        </footer>
+    </div>
+</div>
+<script src="/static/scripts/jquery.min.js" th:src="@{/scripts/jquery.min.js}"></script>
+<script src="/static/scripts/modernizr.min.js" th:src="@{/scripts/modernizr.min.js}"></script>
+<script src="/static/plugin/bootstrap/js/bootstrap.min.js" th:src="@{/plugin/bootstrap/js/bootstrap.min.js}"></script>
+<script src="/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"
+        th:src="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script src="/static/plugin/nprogress/nprogress.js" th:src="@{/plugin/nprogress/nprogress.js}"></script>
+<script src="/static/plugin/sweet-alert/sweetalert.min.js" th:src="@{/plugin/sweet-alert/sweetalert.min.js}"></script>
+<script src="/static/plugin/waves/waves.min.js" th:src="@{/plugin/waves/waves.min.js}"></script>
+<!-- Full Screen Plugin -->
+<script src="/static/plugin/fullscreen/jquery.fullscreen-min.js"
+        th:src="@{/plugin/fullscreen/jquery.fullscreen-min.js}"></script>
+
+<script src="/static/scripts/main.min.js" th:src="@{/scripts/main.min.js}"></script>
+<script src="/static/color-switcher/color-switcher.min.js" th:src="@{/color-switcher/color-switcher.min.js}"></script>
+</body>
+</html>

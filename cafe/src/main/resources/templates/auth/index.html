@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Home</title>
+    <!-- Main Styles -->
+    <link rel="stylesheet" type="text/css" href="/static/styles/style.min.css" th:href="@{/styles/style.min.css}">
+    <!-- mCustomScrollbar -->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css"
+          th:href="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.min.css}">
+    <!-- Waves Effect -->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/waves/waves.min.css"
+          th:href="@{/plugin/waves/waves.min.css}">
+    <!-- Sweet Alert -->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/sweet-alert/sweetalert.css"
+          th:href="@{/plugin/sweet-alert/sweetalert.css}">
+    <!-- Percent Circle -->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/percircle/css/percircle.css"
+          th:href="@{/plugin/percircle/css/percircle.css}">
+    <!-- Chartist Chart -->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/chart/chartist/chartist.min.css"
+          th:href="@{/plugin/chart/chartist/chartist.min.css}">
+    <!-- FullCalendar -->
+    <link rel="stylesheet" type="text/css" href="/static/plugin/fullcalendar/fullcalendar.min.css"
+          th:href="@{/plugin/fullcalendar/fullcalendar.min.css}">
+    <link rel="stylesheet" type="text/css" href="/static/plugin/fullcalendar/fullcalendar.print.css"
+          th:href="@{/plugin/fullcalendar/fullcalendar.print.css}" media='print'>
+    <!-- Color Picker -->
+    <link rel="stylesheet" type="text/css" href="/static/color-switcher/color-switcher.min.css"
+          th:href="@{/color-switcher/color-switcher.min.css}">
+
+    <base href="/">
+</head>
+<body>
+<div class="main-menu">
+    <header class="header">
+        <a href="/auth/index" class="logo">Кафе</a>
+        <button type="button" class="button-close fa fa-times js__menu_close"></button>
+        <div class="user">
+            <h5 class="name"><a>Администратор</a></h5>
+            <div class="control-wrap js__drop_down">
+                <i class="fa fa-caret-down js__drop_down_button"></i>
+                <div class="control-list">
+                    <div class="control-item">
+                        <div class="control-item">
+                            <a href="javascript: document.outForm.submit()" role="menuitem"><i
+                                    class="fa fa-sign-out"></i> Log out
+                                <form name="outForm" th:action="@{/auth/logout}" method="post" th:hidden="true">
+                                    <input hidden type="submit" value="Sign Out"/>
+                                </form>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+
+        <div class="navigation">
+
+            <h5 class="title">Навигация</h5>
+            <ul class="menu js__accordion">
+                <li>
+                    <a class="waves-effect" href="#"><i
+                            class="menu-icon fa fa-calendar"></i><span>Календарь</span></a>
+                </li>
+                <li>
+                    <a class="waves-effect parent-item js__control" href="#">
+                        <i class="menu-icon fa fa-th-large"></i>
+                        <span>Формы</span>
+                        <span class="menu-arrow fa fa-angle-down"></span>
+                    </a>
+                    <ul class="sub-menu js__content">
+                        <li><a href="/position-create">Должности</a></li>
+                        <li><a href="/coworker-create">Сотрудники</a></li>
+                        <li><a href="/order-create">Заказы</a></li>
+                        <li><a href="/menu-create">Меню</a></li>
+                        <li><a href="/dish-create">Блюда</a></li>
+                        <li><a href="/dish-in-order-create">Блюда в доставке</a></li>
+                        <li><a href="/ingredient-in-the-composition-create">Ингредиенты в составе</a></li>
+                        <li><a href="/ingredient-create">Ингредиенты</a></li>
+                        <li><a href="/purchase-create">Закупка</a></li>
+                        <li><a href="/contractor-create">Поставщики</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="waves-effect parent-item js__control" href="#">
+                        <i class="menu-icon fa fa-table"></i>
+                        <span>Таблицы</span>
+                        <span class="menu-arrow fa fa-angle-down"></span>
+                    </a>
+                    <ul class="sub-menu js__content">
+                        <li><a href="/position">Должности</a></li>
+                        <li><a href="/coworker">Сотрудники</a></li>
+                        <li><a href="/order">Заказы</a></li>
+                        <li><a href="/menu">Меню</a></li>
+                        <li><a href="/dish">Блюда</a></li>
+                        <li><a href="/dish-in-order">Блюда в доставке</a></li>
+                        <li><a href="/ingredient-in-the-composition">Ингредиенты в составе</a></li>
+                        <li><a href="/ingredient">Ингредиенты</a></li>
+                        <li><a href="/purchase">Закупка</a></li>
+                        <li><a href="/contractor">Поставщики</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="fixed-navbar">
+    <div class="pull-left">
+        <button type="button" class="menu-mobile-button glyphicon glyphicon-menu-hamburger js__menu_mobile"></button>
+        <h1 class="page-title"></h1>
+    </div>
+    <div class="pull-right">
+        <div class="ico-item">
+            <a href="#" class="ico-item fa fa-search js__toggle_open" data-target="#searchform-header"></a>
+            <form action="#" id="searchform-header" class="searchform js__toggle">
+                <input type="search" placeholder="Search..." class="input-search">
+                <button class="fa fa-search button-search" type="submit"></button>
+            </form>
+        </div>
+        <div class="ico-item fa fa-arrows-alt js__full_screen"></div>
+
+        <a href="javascript: document.logoutForm.submit()" role="menuitem" class="ico-item fa fa-power-off"></a>
+        <form name="logoutForm" th:action="@{/auth/logout}" method="post" th:hidden="true">
+            <input hidden type="submit" value="Sign Out"/>
+        </form>
+    </div>
+</div>
+
+<div id="wrapper">
+    <div class="main-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box-content">
+                    <div id="calendar"></div>
+                    <!-- /#calendar -->
+                </div>
+                <!-- /.box-content -->
+            </div>
+            <!-- /.col-md-12 -->
+        </div>
+        <!-- /.row -->
+        <footer class="footer">
+            <ul class="list-inline">
+                <li>2022 © rc.</li>
+            </ul>
+        </footer>
+    </div>
+    <!-- /.main-content -->
+</div><!--/#wrapper -->
+
+
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="/static/scripts/jquery.min.js" th:src="@{/scripts/jquery.min.js}"></script>
+<script src="/static/scripts/modernizr.min.js" th:src="@{/scripts/modernizr.min.js}"></script>
+<script src="/static/plugin/bootstrap/js/bootstrap.min.js" th:src="@{/plugin/bootstrap/js/bootstrap.min.js}"></script>
+<script src="/static/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js"
+        th:src="@{/plugin/mCustomScrollbar/jquery.mCustomScrollbar.concat.min.js}"></script>
+<script src="/static/plugin/nprogress/nprogress.js" th:src="@{/plugin/nprogress/nprogress.js}"></script>
+<script src="/static/plugin/sweet-alert/sweetalert.min.js" th:src="@{/plugin/sweet-alert/sweetalert.min.js}"></script>
+<script src="/static/plugin/waves/waves.min.js" th:src="@{/plugin/waves/waves.min.js}"></script>
+<!-- Full Screen Plugin -->
+<script src="/static/plugin/fullscreen/jquery.fullscreen-min.js"
+        th:src="@{/plugin/fullscreen/jquery.fullscreen-min.js}"></script>
+
+<!-- Percent Circle -->
+<script src="/static/plugin/percircle/js/percircle.js" th:src="@{/plugin/percircle/js/percircle.js}"></script>
+
+<!-- Google Chart -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<!-- Chartist Chart -->
+<script src="/static/plugin/chart/chartist/chartist.min.js" th:src="@{/plugin/chart/chartist/chartist.min.js}"></script>
+<script src="/static/scripts/chart.chartist.init.min.js" th:src="@{/scripts/chart.chartist.init.min.js}"></script>
+
+<!-- FullCalendar -->
+<script src="/static/plugin/moment/moment.js" th:src="@{/plugin/moment/moment.js}"></script>
+<script src="/static/plugin/fullcalendar/fullcalendar.min.js"
+        th:src="@{/plugin/fullcalendar/fullcalendar.min.js}"></script>
+<script src="/static/scripts/fullcalendar.init.js" th:src="@{/scripts/fullcalendar.init.js}"></script>
+
+<script src="/static/scripts/main.min.js" th:src="@{/scripts/main.min.js}"></script>
+<script src="/static/color-switcher/color-switcher.min.js" th:src="@{/color-switcher/color-switcher.min.js}"></script>
+</body>
+</html>
