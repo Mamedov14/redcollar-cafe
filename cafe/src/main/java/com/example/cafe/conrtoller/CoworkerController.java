@@ -47,7 +47,7 @@ public class CoworkerController {
 
     @GetMapping("/coworker-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updateCoworkerForm(@PathVariable long id, Model model) {
+    public String updateCoworkerForm(@PathVariable Long id, Model model) {
         List<Position> positions = coworkerService.getPositionList();
 
         if (coworkerService.coworkerList(id).isEmpty()) {
@@ -60,7 +60,7 @@ public class CoworkerController {
 
     @PostMapping("/coworker-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updateCoworker(@PathVariable long id,
+    public String updateCoworker(@PathVariable Long id,
                                  @RequestParam String fio,
                                  @RequestParam String namePosition) {
         coworkerService.updateCoworker(id, fio, namePosition);
@@ -69,7 +69,7 @@ public class CoworkerController {
 
     @GetMapping("/coworker-delete/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String coworkerDelete(@PathVariable long id, Model model) {
+    public String coworkerDelete(@PathVariable Long id, Model model) {
         coworkerService.deleteCoworker(id);
         return "redirect:/coworker";
     }

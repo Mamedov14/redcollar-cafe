@@ -40,14 +40,14 @@ public class MenuService {
         menuRepository.deleteById(id);
     }
 
-    public List<Menu> menuList(long id) {
+    public List<Menu> menuList(Long id) {
         Optional<Menu> menu = menuRepository.findById(id);
         ArrayList<Menu> res = new ArrayList<>();
         menu.ifPresent(res::add);
         return res;
     }
 
-    public Menu update(long id, String nameDish, double price, String data) {
+    public Menu update(Long id, String nameDish, double price, String data) {
         Menu menu = menuRepository.findById(id).orElseThrow();
         Dish dish = dishRepository.findByName(nameDish);
         menu.setDish(dish);

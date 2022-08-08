@@ -62,14 +62,14 @@ public class MenuController {
 
     @GetMapping("/menu-delete/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String delete(@PathVariable long id) {
+    public String delete(@PathVariable Long id) {
         menuService.delete(id);
         return "redirect:/menu";
     }
 
     @GetMapping("/menu-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updateForm(@PathVariable long id, Model model) {
+    public String updateForm(@PathVariable Long id, Model model) {
 
         List<Dish> dishes = menuService.findAllDishes();
         if (menuService.menuList(id).isEmpty()) {
@@ -82,7 +82,7 @@ public class MenuController {
 
     @PostMapping("/menu-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String update(@PathVariable long id,
+    public String update(@PathVariable Long id,
                          @RequestParam String name,
                          @RequestParam Double price,
                          @RequestParam String date) {

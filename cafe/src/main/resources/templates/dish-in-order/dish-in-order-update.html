@@ -16,7 +16,8 @@
     <!-- Color Picker -->
     <link rel="stylesheet" href="/static/color-switcher/color-switcher.min.css"
           th:href="@{/color-switcher/color-switcher.min.css}">
-    <link rel="stylesheet" type="text/css" href="/static/styles/button-create.css" th:href="@{/style/button-create.css}">
+    <link rel="stylesheet" type="text/css" href="/static/styles/button-create.css"
+          th:href="@{/style/button-create.css}">
 </head>
 <body>
 <div th:insert="blocks/header :: header"></div>
@@ -29,13 +30,13 @@
                     <div th:each="d : ${dishInOrder}" class="card-content">
                         <form action="/dish-in-order-create" method="post" class="form-horizontal">
                             <div class="form-group">
-                                <label for="inp-type-1" class="col-sm-3 control-label">Должность</label>
+                                <label for="inp-type-1" class="col-sm-3 control-label">Название блюда</label>
                                 <div class="col-sm-9">
                                     <label>
                                         <select class="form-control select2_1" name="arrayNameDish">
-                                            <option th:each="m:${menu}"
+                                            <option th:each="m : ${menu}"
                                                     th:value="${m.getDish().getName()} + '|' + ${m.getDate()}"
-                                                    th:text="${m.getDish().getName() + ' | ' + m.getDate()}"
+                                                    th:text="${m.getDish().getName()} + ' | ' + ${m.getDate()}"
                                                     th:type="text">
                                             </option>
                                         </select>

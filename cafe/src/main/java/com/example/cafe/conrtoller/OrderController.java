@@ -63,7 +63,7 @@ public class OrderController {
 
     @GetMapping("/order-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updateForm(@PathVariable long id, Model model) {
+    public String updateForm(@PathVariable Long id, Model model) {
         List<Coworker> coworkers = orderService.findAllCoworkers();
         List<Menu> menus = orderService.findAllMenus();
 
@@ -78,7 +78,7 @@ public class OrderController {
 
     @PostMapping("/order-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String update(@PathVariable long id,
+    public String update(@PathVariable Long id,
                          @RequestParam String name,
                          @RequestParam String arrayNameDish,
                          @RequestParam String date,

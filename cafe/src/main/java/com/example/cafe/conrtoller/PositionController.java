@@ -43,7 +43,7 @@ public class PositionController {
 
     @GetMapping("/position-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updatePositionForm(@PathVariable long id, Model model) {
+    public String updatePositionForm(@PathVariable Long id, Model model) {
         if (positionService.positionList(id).isEmpty()) {
             return "redirect:/position";
         }
@@ -53,7 +53,7 @@ public class PositionController {
 
     @PostMapping("/position-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updatePosition(@PathVariable long id, @RequestParam String name, Model model) {
+    public String updatePosition(@PathVariable Long id, @RequestParam String name, Model model) {
         positionService.updatePosition(id, name);
         return "redirect:/position";
     }
@@ -70,7 +70,7 @@ public class PositionController {
 
     @GetMapping("/position-delete/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String positionDelete(@PathVariable long id) {
+    public String positionDelete(@PathVariable Long id) {
         try{
             positionService.delete(id);
             return "redirect:/position";

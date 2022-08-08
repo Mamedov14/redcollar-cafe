@@ -37,13 +37,13 @@ public class DishService {
     }
 
     public Dish update(Long id, String nameDish, String unit) {
-        Dish dish = findById(id);
+        Dish dish = dishRepository.findById(id).orElseThrow();
         dish.setName(nameDish);
         dish.setUnit(unit);
         return save(dish);
     }
 
-    public List<Dish> dishList(long id) {
+    public List<Dish> dishList(Long id) {
         Optional<Dish> dish = dishRepository.findById(id);
         ArrayList<Dish> res = new ArrayList<>();
         dish.ifPresent(res::add);

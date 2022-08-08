@@ -60,7 +60,7 @@ public class DishController {
 
     @PostMapping("/dish-update/{id}")
     @PreAuthorize("hasAuthority('developers:write')")
-    public String updateDish(@PathVariable long id,
+    public String updateDish(@PathVariable Long id,
                              @RequestParam String name,
                              @RequestParam String unit) {
         dishService.update(id, name, unit);
